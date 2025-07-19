@@ -1,0 +1,36 @@
+$bg: #1d20217F;
+$fg: #fbf1c7;
+
+.warning {
+  background-color: $bg;
+  font-family: "Mononoki";
+}
+
+.title {
+  font-size: 128px;
+  font-weight: bold;
+  color: $fg;
+}
+
+.subtitle {
+  font-size: 72px;
+  color: rgba($fg, 0.5);
+}
+
+.countdown {
+  font-family: "Mononoki";
+  font-size: 72px;
+  color: $fg;
+}
+
+.battery {
+  font-size: 128px;
+  margin: 0.5em;
+  color: $fg;
+  /* background-color: $bg; */
+  transform: rotate(90deg);
+}
+
+.red {
+  color: #CC241D;
+}

@@ -1,0 +1,3 @@
+# batman
+send notification, gtk4 warn screen, power off countdown on low battery.  
+i spinned this up very quickly and i'll improve it. one day...  
