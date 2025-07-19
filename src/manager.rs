@@ -38,7 +38,7 @@ pub fn run(app: &Application) {
         };
 
         loop {
-            timeout_future_seconds(5).await;
+            timeout_future_seconds(30).await;
             // println!("loop");
             let Some(percent) = percent() else { continue };
             // println!("{percent}");
@@ -50,6 +50,15 @@ pub fn run(app: &Application) {
 
             let Some(status) = status() else { continue };
             if status.trim() == "Charging" {
+                if notified && percent > NOTIFY {
+                    notified = false;
+                }
+                if warned && percent > WARN {
+                    warned = false;
+                }
+                if forced && percent > FORCE {
+                    forced = false;
+                }
                 continue;
             }
             // println!("{status}");
