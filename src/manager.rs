@@ -11,6 +11,8 @@ use crate::overlay::{countdown, open, warn};
 static NOTIFY: u8 = 30; // notify low batt
 static WARN: u8 = 20; // full screen warning
 static FORCE: u8 = 10; // full screen 1 minute countdown to shutdown
+                    
+static COUNTDOWN: Duration = Duration::from_secs(60);
 
 fn percent() -> Option<u8> {
     if let Ok(percent) = std::fs::read_to_string("/sys/class/power_supply/BAT0/capacity") {
@@ -73,7 +75,7 @@ pub fn run(app: &Application) {
                 warn(&app, Some("WARNING"), Some("low battery"), None, Some(256));
                 warned = true;
             } else if percent <= FORCE && !forced {
-                countdown(&app, Duration::from_secs(10));
+                countdown(&app, COUNTDOWN);
                 forced = true;
             }
         }
